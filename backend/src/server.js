@@ -1,10 +1,11 @@
 import express from "express";
 import { env } from "./config/env.js";
 import { connectDB } from "./config/db.js";
-const app = express();
-import { clerkMiddleware } from "./middleware/clerkMiddleware.js";
+import { clerkMiddleware } from "@clerk/express";
 import { inngest, functions } from "./config/inngest.js";
 import { serve } from "inngest/express";
+
+const app = express();
 
 app.use(express.json());
 app.use(clerkMiddleware()); // req.auth will be available in the request object
